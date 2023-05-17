@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">fake_store_api</string>
+    <string name="app_name">Store</string>
+    <string name="category">Category : </string>
+
+    <string-array name="spinner">
+        <item>Java</item>
+        <item>Kotlin</item>
+        <item>Swift</item>
+        <item>Python</item>
+        <item>Scala</item>
+        <item>Perl</item>
+    </string-array>
 </resources>

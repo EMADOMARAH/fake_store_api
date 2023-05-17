@@ -1,7 +1,7 @@
 package com.emadomarah.fake_store_api.di
 
 import com.emadomarah.data.repo.StoreRepoImpl
-import com.emadomarah.domain.usecase.StoreUseCases
+import com.emadomarah.domain.repo.usecase.StoreUseCases
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +14,7 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 object UseCaseModule {
     @Provides
-    fun provideUseCase(storeRepoImpl: StoreRepoImpl) : StoreUseCases{
+    fun provideUseCase(storeRepoImpl: StoreRepoImpl) : StoreUseCases {
         return StoreUseCases(storeRepoImpl)
     }
 }
