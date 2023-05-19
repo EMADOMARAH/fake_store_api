@@ -1,4 +1,4 @@
-package com.emadomarah.domain.entity.db.products
+package com.emadomarah.domain.entity.db
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -12,6 +12,5 @@ data class ProductsTable(
     @ColumnInfo(name = "description") val description: String?,
     @ColumnInfo(name = "image") val image: String?,
     @ColumnInfo(name = "title") val title: String?,
-    @ColumnInfo(name = "price") val price: Double?,
-    @ColumnInfo(name = "rating") val rating: Rating?,
+    @ColumnInfo(name = "price") val price: Double?
 )
