@@ -2,6 +2,7 @@ package com.emadomarah.fake_store_api.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
@@ -23,9 +24,12 @@ class MainActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
-
+        val spinnerCategories = resources.getStringArray(R.array.spinner)
         viewModel.getProducts()
 
+
+//        val adapter = ArrayAdapter(this , androidx.appcompat.R.layout.support_simple_spinner_dropdown_item , spinnerCategories)
+//        binding.categorySpinner.adapter = adapter
 
         val productsVerticalAdapter = ProductsVerticalAdapter()
         val productHorizontalAdapter = ProductHorizontalAdapter()

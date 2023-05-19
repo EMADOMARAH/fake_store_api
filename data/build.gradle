@@ -47,6 +47,14 @@ dependencies {
     implementation  'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
     implementation  'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
 
+    //room
+    def room_version = "2.3.0"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$room_version")
     //to make data layer know about domain layer
     implementation project(path: ':domain')
 }

@@ -1,5 +1,7 @@
 package com.emadomarah.fake_store_api.recyclerAdapters
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +11,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.emadomarah.domain.entity.product.ProductModel
 import com.emadomarah.fake_store_api.R
+import com.emadomarah.fake_store_api.ui.home.ProductDetailsActivity
+import com.emadomarah.fake_store_api.utils.Shared
 import kotlinx.android.synthetic.main.product_image_item.view.*
 
 class ProductHorizontalAdapter() : ListAdapter<ProductModel, ProductHorizontalAdapter.ViewHolder>(
     CategoryDiffCallback()
 ) {
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -22,6 +27,7 @@ class ProductHorizontalAdapter() : ListAdapter<ProductModel, ProductHorizontalAd
         // that is used to hold list item
         val itemBinding = LayoutInflater.from(parent.context)
             .inflate(R.layout.product_image_item, parent, false)
+
         return ViewHolder(itemBinding)
     }
 
@@ -31,9 +37,20 @@ class ProductHorizontalAdapter() : ListAdapter<ProductModel, ProductHorizontalAd
 
     // Holds the views for adding it to image and text
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
+
+        private val context: Context? = ItemView.context
+
         fun bind(productModel: ProductModel){
 
+
             Glide.with(itemView.rootView.context).load(productModel.image).into(itemView.product_image_iv)
+            itemView.setOnClickListener {
+                Shared.model = productModel
+
+                var intent: Intent = Intent(context , ProductDetailsActivity::class.java)
+                context?.startActivity(intent)
+
+            }
         }
 
     }

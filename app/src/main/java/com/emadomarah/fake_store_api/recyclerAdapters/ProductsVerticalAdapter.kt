@@ -1,4 +1,6 @@
 package com.emadomarah.fake_store_api.recyclerAdapters
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.emadomarah.domain.entity.product.ProductModel
 import com.emadomarah.fake_store_api.R
+import com.emadomarah.fake_store_api.ui.home.ProductDetailsActivity
+import com.emadomarah.fake_store_api.utils.Shared
 import kotlinx.android.synthetic.main.full_producat_item.view.*
 
 class ProductsVerticalAdapter() : ListAdapter<ProductModel, ProductsVerticalAdapter.ViewHolder>(
@@ -28,16 +32,24 @@ class ProductsVerticalAdapter() : ListAdapter<ProductModel, ProductsVerticalAdap
     // binds the list items to a view
      override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-    holder.bind(getItem(position))
+       holder.bind(getItem(position))
 
     }
 
     // Holds the views for adding it to image and text
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
+        private val context: Context? = ItemView.context
         fun bind(productModel: ProductModel){
+
             itemView.product_name_tv.text = productModel.title
             itemView.product_price_tv.text = "Price : ${productModel?.price} $"
             Glide.with(itemView.rootView.context).load(productModel.image).into(itemView.product_iv)
+            itemView.layout.setOnClickListener {
+                Shared.model = productModel
+                var intent: Intent = Intent(context , ProductDetailsActivity::class.java)
+                context?.startActivity(intent)
+            }
+
         }
 
     }
