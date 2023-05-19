@@ -3,6 +3,7 @@
     <string name="category">Category : </string>
 
     <string-array name="spinner">
+        <item>all</item>
         <item>men\'s clothing</item>
         <item>jewelery</item>
         <item>electronics</item>

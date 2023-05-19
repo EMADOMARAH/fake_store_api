@@ -21,17 +21,11 @@ class StoreViewModel @Inject constructor(
 
     private val _products : MutableStateFlow<ProductResponse?> = MutableStateFlow(null)
     val products : StateFlow<ProductResponse?> = _products
-    val productCategoriesList:MutableList<String> = ArrayList()
-
-
-
 
     fun getProducts(){
         viewModelScope.launch {
             try {
                 _products.value = getStoreUseCases.getAllProduct()
-
-                Log.d("ViewModelData" , products.value.toString())
 
             }catch (e:Exception){
                 Log.e("StoreViewModel" , e.message.toString())
